@@ -1,0 +1,22 @@
+# program to print interest
+"""
+Created on Tue Feb 17 09:45:18 2026
+
+@author: pratik mane
+"""
+
+def simple_interest(principle,rate,time):
+    si=(principle*rate*time)/100
+    return si
+
+#Taking input from user
+
+p=float(input("Enter principle amount:"))
+r=float(input("Enterrate of interest:"))
+t=float(input("Entertime(in years):"))
+
+#Function call
+
+interest=simple_interest(p,r,t)
+
+print("simple interestis:",interest)
