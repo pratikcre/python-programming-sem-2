@@ -1,0 +1,18 @@
+# -*-library to store books name  and price -*-
+"""
+Created on Tue Mar 17 10:43:04 2026
+
+@author: Pratik Mane 
+"""
+# Library dictionary
+library = {
+    "Python Basics": 250,
+    "Data Structures": 300,
+    "Algorithms": 400
+}
+
+# Update price of a book
+library["Data Structures"] = 350
+
+print(library)
+
