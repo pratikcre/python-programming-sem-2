@@ -1,0 +1,15 @@
+# -*- name address  -*-
+"""
+Created on Tue Mar 17 11:02:32 2026
+
+@author: Pratik Mane
+"""
+
+# Program to display name, address, and contact number
+name = "Your Name"
+address = "123 Python Street, Coder City"
+contact = "+1-555-012-3456"
+
+print(f"Name: {name}")
+print(f"Address: {address}")
+print(f"Contact: {contact}")
