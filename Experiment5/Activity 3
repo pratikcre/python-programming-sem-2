@@ -1,0 +1,22 @@
+# -*-Item puchased -*-
+"""
+Created on Tue Mar 17 10:51:04 2026
+
+@author: pratik Mane
+"""
+# List of purchased items
+purchases = ["apple", "banana", "apple", "orange", "banana", "apple"]
+
+# Dictionary to store frequency
+frequency = {}
+
+# Count frequency
+for item in purchases:
+    if item in frequency:
+        frequency[item] += 1
+    else:
+        frequency[item] = 1
+
+print("Item Frequency:")
+print(frequency)
+
