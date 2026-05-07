@@ -1,0 +1,12 @@
+# Chech Driver is Overspeeding
+"""
+Created on Tue Feb 10 10:35:50 2026
+
+@author: Pratik 
+"""
+
+speed =  int(input("Enter speed km/h:"))
+if speed>60:
+    print("Overspeeding!Fine Applied.")
+else:
+    print("Within Limit.")
