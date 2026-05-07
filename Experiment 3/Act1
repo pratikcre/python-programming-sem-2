@@ -1,0 +1,17 @@
+# Shop prints multiple copies of receipts nested loops to print item numbers repeatedly
+"""
+Created on Mon Mar 23 03:20:54 2026
+
+@author: pratik
+"""
+
+copies = int(input("Enter number of receipt copies: "))
+
+items = int(input("Enter number of items: "))
+
+for i in range(1, copies + 1):   
+    print(f"\nReceipt Copy {i}")
+    print("-------------------")
+    
+    for j in range(1, items + 1):   
+        print(f"Item {j}")
