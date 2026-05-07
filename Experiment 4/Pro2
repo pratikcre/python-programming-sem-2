@@ -1,0 +1,10 @@
+# -*- reverse a given string using slicing -*-
+"""
+Created on Tue Mar 24 10:12:24 2026
+
+@author: pratik
+"""
+
+string = input("Enter a string: ")
+reversed_string = string[::-1]
+print("Reversed string:", reversed_string)
