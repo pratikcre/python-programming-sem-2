@@ -1,0 +1,25 @@
+# -*- Handle invalid age input in registration form -*-
+"""
+Created on Tue Apr 21 05:43:06 2026
+
+@author: Pratik 
+"""
+
+def register_user():
+    try:
+        name = input("Enter your name: ")
+        age = int(input("Enter your age: "))
+
+        if age <= 0:
+            print("Invalid age! Age must be greater than 0.")
+        elif age < 18:
+            print("You are not eligible for registration.")
+        else:
+            print("Registration successful!")
+
+    except ValueError:
+        print("Invalid input! Please enter a valid number for age.")
+
+
+# Run function
+register_user()
