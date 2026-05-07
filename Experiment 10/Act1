@@ -1,0 +1,33 @@
+# -*- Streamlit grocery bill calculator -*-
+"""
+Created on Fri May  1 11:25:01 2026
+
+@author: Pratik 
+"""
+
+import streamlit as st
+
+st.title("🛒 Grocery Bill Calculator")
+
+if "cart" not in st.session_state:
+    st.session_state.cart = []
+
+name = st.text_input("Item name")
+price = st.number_input("Price", min_value=0.0)
+qty = st.number_input("Quantity", min_value=1)
+
+if st.button("Add Item"):
+    total = price * qty
+    st.session_state.cart.append((name, price, qty, total))
+
+st.subheader("🧾 Bill Details")
+
+grand_total = 0
+
+if st.session_state.cart:
+    for i, item in enumerate(st.session_state.cart):
+        name, price, qty, total = item
+        grand_total += total
+        st.write(f"{i+1}. {name} - ₹{price} x {qty} = ₹{total}")
+
+    st.subheader(f"💰 Grand Total: ₹{grand_total}")
