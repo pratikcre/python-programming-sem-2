@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri May  1 12:05:14 2026
+
+@author: pratik 
+"""
+
+import streamlit as st
+
+def calculate_grade(percentage):
+    if percentage >= 90:
+        return "A+"
+    elif percentage >= 75:
+        return "A"
+    elif percentage >= 60:
+        return "B"
+    elif percentage >= 50:
+        return "C"
+    elif percentage >= 40:
+        return "D"
+    else:
+        return "Fail"
+
+st.title("🎓 Student Result Calculator")
+
+name = st.text_input("Enter Student Name")
+
+num_subjects = st.number_input("Number of Subjects", min_value=1, step=1)
+
+marks = []
+total = 0
+
+for i in range(int(num_subjects)):
+    mark = st.number_input(f"Marks for Subject {i+1}", min_value=0.0, max_value=100.0)
+    marks.append(mark)
+
+if st.button("Calculate Result"):
+    total = sum(marks)
+    percentage = total / len(marks)
+    grade = calculate_grade(percentage)
+
+    st.subheader("📊 Result")
+    st.write(f"**Name:** {name}")
+    st.write(f"**Total Marks:** {total}")
+    st.write(f"**Percentage:** {percentage:.2f}%")
+    st.write(f"**Grade:** {grade}")
+
+    if grade == "Fail":
+        st.error("Result: Fail ❌")
+    else:
+        st.success("Result: Pass ✅")
