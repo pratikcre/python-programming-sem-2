@@ -1,0 +1,46 @@
+# ATM withdrawal system handles insufficient balance.
+"""
+Created on Mon Mar 30 15:35:24 2026
+
+@author: pratik
+"""
+class ATM:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient Balance! Transaction Failed.")
+        else:
+            self.balance -= amount
+            print("Please collect your cash:", amount)
+            print("Remaining Balance:", self.balance)
+
+    def display_balance(self):
+        print("Current Balance:", self.balance)
+
+
+# Initial balance
+balance = float(input("Enter initial balance: "))
+atm = ATM(balance)
+
+while True:
+    print("\n1. Withdraw")
+    print("2. Check Balance")
+    print("3. Exit")
+
+    choice = int(input("Enter choice: "))
+
+    if choice == 1:
+        amount = float(input("Enter amount to withdraw: "))
+        atm.withdraw(amount)
+
+    elif choice == 2:
+        atm.display_balance()
+
+    elif choice == 3:
+        print("Thank you for using ATM")
+        break
+
+    else:
+        print("Invalid choice")
