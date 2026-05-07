@@ -1,0 +1,41 @@
+# -*- Calculate total monthly expenses -*-
+"""
+Created on Thu Apr  2 20:37:34 2026
+
+@author: pratik
+"""
+
+filename = "expenses.txt"
+
+def add_expense():
+    amount = float(input("Enter daily expense: "))
+    with open(filename, "a") as file:
+        file.write(str(amount) + "\n")
+    print("Expense added successfully!\n")
+
+def calculate_total():
+    total = 0
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                total += float(line.strip())
+        print("Total Monthly Expense:", total)
+    except FileNotFoundError:
+        print("No expense file found!")
+
+while True:
+    print("\n1. Add Daily Expense")
+    print("2. Calculate Monthly Expense")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        add_expense()
+    elif choice == '2':
+        calculate_total()
+    elif choice == '3':
+        print("Exiting program...")
+        break
+    else:
+        print("Invalid choice! Try again.")
