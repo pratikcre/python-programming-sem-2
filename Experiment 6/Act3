@@ -1,0 +1,15 @@
+# -*- Program to read a complaint file and display all complaints -*-
+"""
+Created on Thu Apr  2 20:50:53 2026
+
+@author: Pratik 
+"""
+
+try:
+    file = open("complaints.txt", "r")
+    print("--- List of Complaints ---\n")
+    for complaint in file:
+        print(complaint.strip())
+    file.close()
+except FileNotFoundError:
+    print("Complaint file not found!")
