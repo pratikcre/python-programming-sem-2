@@ -1,0 +1,14 @@
+# -*- Count how many times a word appears in a review -*-
+"""
+Created on Tue Mar 24 09:48:59 2026
+
+@author: pratik
+"""
+
+review = input("Enter the review: ")
+
+word = input("Enter the word to count: ")
+
+count = review.lower().count(word.lower())
+
+print(f"The word '{word}' appears {count} times in the review.")
