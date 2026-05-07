@@ -1,0 +1,89 @@
+# -*- Rock-paper-scissors game against computer -*-
+"""
+Created on Fri May  1 12:23:17 2026
+
+@author: Pratik 
+"""
+
+import streamlit as st
+import random
+
+# Name + Emoji mapping
+choices = {
+    "Rock 🪨": "Rock",
+    "Paper 📄": "Paper",
+    "Scissors ✂️": "Scissors"
+}
+
+reverse_emoji = {
+    "Rock": "🪨",
+    "Paper": "📄",
+    "Scissors": "✂️"
+}
+
+choice_list = list(choices.keys())
+
+# Session state
+if "user_score" not in st.session_state:
+    st.session_state.user_score = 0
+if "computer_score" not in st.session_state:
+    st.session_state.computer_score = 0
+if "draws" not in st.session_state:
+    st.session_state.draws = 0
+
+def get_winner(user, computer):
+    if user == computer:
+        return "Draw"
+    elif (
+        (user == "Rock" and computer == "Scissors") or
+        (user == "Paper" and computer == "Rock") or
+        (user == "Scissors" and computer == "Paper")
+    ):
+        return "User"
+    else:
+        return "Computer"
+
+st.title("🎮 Rock Paper Scissors")
+
+st.markdown("### Choose your move:")
+
+user_pick = st.radio(
+    "Your Choice",
+    choice_list
+)
+
+user_choice = choices[user_pick]
+computer_choice = random.choice(["Rock", "Paper", "Scissors"])
+
+if st.button("Play 🎯"):
+    result = get_winner(user_choice, computer_choice)
+
+    st.subheader("📢 Result")
+
+    st.write(f"👤 You: {reverse_emoji[user_choice]} **{user_choice}**")
+    st.write(f"🤖 Computer: {reverse_emoji[computer_choice]} **{computer_choice}**")
+
+    if result == "Draw":
+        st.warning("🤝 It's a Draw!")
+        st.session_state.draws += 1
+    elif result == "User":
+        st.success("🎉 You Win!")
+        st.session_state.user_score += 1
+    else:
+        st.error("💻 Computer Wins!")
+        st.session_state.computer_score += 1
+
+# Scoreboard
+st.subheader("🏆 Scoreboard")
+
+col1, col2, col3 = st.columns(3)
+col1.metric("👤 You", st.session_state.user_score)
+col2.metric("💻 Computer", st.session_state.computer_score)
+col3.metric("🤝 Draws", st.session_state.draws)
+
+# Reset
+if st.button("🔄 Reset Game"):
+    st.session_state.user_score = 0
+    st.session_state.computer_score = 0
+    st.session_state.draws = 0
+    st.success("Game reset!")
